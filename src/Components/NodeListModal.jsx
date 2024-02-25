@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import CountrySummary from "./CountrySummary";
 import { useParams } from "react-router-dom";
 // import SearchBar from "./SearchBar";
-// import PaginationDetails from "./PaginationDetails";
+import PaginationDetails from "./PaginationDetails";
 import NodeList from "./NodeList";
 import fetchNodesByCountryCode from "../Utils/fetchNodeByCountryCode";
 
 function NodeListModal({ nodes, activeNodes }) {
   const { countryCode } = useParams();
-  const [countryNodes, setCountryNodes] = useState({}); //State to capture the list of available active nodes in the country based on url parameter
+  const [countryNodes, setCountryNodes] = useState([]); //State to capture the list of available active nodes in the country based on url parameter
+
   //useEffect hook to synchronise between the nodes and country nodes
   useEffect(() => {
     if (countryCode != null && nodes != null) {
@@ -25,8 +26,12 @@ function NodeListModal({ nodes, activeNodes }) {
         activeNodes={activeNodes}
       />
       {/* <SearchBar /> */}
-      {/* <PaginationDetails /> */}
-      <NodeList countryCode={countryCode} nodes={nodes} />
+      <NodeList
+        countryCode={countryCode}
+        // nodes={nodes}
+        countryNodes={countryNodes}
+      />
+      {/* {console.log(countryNodes)} */}
     </div>
   );
 }
