@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import CountriesModal from "./Components/CountriesModal";
 import "./App.css";
-// import NodeListModal from "./Components/NodeListModal";
+import NodeListModal from "./Components/NodeListModal";
 import formatCountryData from "./Utils/formatCountryData";
 
 import formatTimestamp from "./Utils/formatTimestamp";
+import fetchNodeByCountryCode from "./Utils/fetchNodeByCountryCode";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function App() {
-  const [snapshot, setSnapshot] = useState({});
-
-  const [activeNodes, setActiveNodes] = useState(0);
-  const [formattedTimeStamp, setFormattedTimeStamp] = useState(0);
-  const [nodes, setNodes] = useState({});
-  const [countryData, setCountryData] = useState({});
+  const [snapshot, setSnapshot] = useState({}); //State to capture the snapshot from the API every 10 mins
+  const [activeNodes, setActiveNodes] = useState(0); //State to capture the number of active nodes from the snapshot
+  const [formattedTimeStamp, setFormattedTimeStamp] = useState(0); //State to capture the formattedTimeStamp from the snapshot
+  const [nodes, setNodes] = useState({}); //State to capture the complete available nodes from the snapshot
+  const [countryData, setCountryData] = useState({}); //State that captures countryCode and number of active nodes in the country.
 
   // useEffect to fetch the API data
   useEffect(() => {
@@ -48,7 +49,6 @@ function App() {
     setFormattedTimeStamp(formatTimestamp(snapshot.timestamp));
     //Update the object that groups nodes by countries.
     setNodes(snapshot.nodes);
-
     //Update the countryData state, that stores value in this format{country:number of active nodes}
     setCountryData(formatCountryData(snapshot.nodes));
   }, [snapshot]);
@@ -57,7 +57,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/"
+          path="country"
           element={
             <CountriesModal
               activeNodes={activeNodes}
@@ -66,7 +66,10 @@ function App() {
             />
           }
         />
-        {/* <Route path="/NodeList" element={<NodeListModal />} /> */}
+        <Route
+          path="country/:countryCode"
+          element={<NodeListModal nodes={nodes} activeNodes={activeNodes} />}
+        />
       </Routes>
     </BrowserRouter>
   );

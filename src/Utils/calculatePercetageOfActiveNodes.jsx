@@ -1,9 +1,13 @@
-import data from "../testData.json";
+// import data from "../testData.json";
 import calculateNoOfActiveNodes from "./calculateNoOfActiveNodes";
 
-export default function calculatePercetageOfActiveNodes() {
-  let totalNoOfNodes = data.total_nodes;
-  let noOfActiveNodesByCountry = calculateNoOfActiveNodes();
+export default function calculatePercetageOfActiveNodes(
+  countryCode,
+  nodes,
+  activeNodes
+) {
+  let totalNoOfNodes = activeNodes;
+  let noOfActiveNodesByCountry = calculateNoOfActiveNodes(countryCode, nodes);
   let percentageOfActiveNodes = 0;
   percentageOfActiveNodes = (noOfActiveNodesByCountry / totalNoOfNodes) * 100;
 
