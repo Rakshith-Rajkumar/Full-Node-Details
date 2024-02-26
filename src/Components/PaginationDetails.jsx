@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 
-function PaginationDetails({ currentPage, totalPages, nextPage, prevPage }) {
+export default function PaginationDetails({
+  currentPage,
+  totalPages,
+  nextPage,
+  prevPage,
+}) {
   return (
     <div className="p-1 flex flex-row justify-center gap-2">
       <button
@@ -23,5 +28,3 @@ function PaginationDetails({ currentPage, totalPages, nextPage, prevPage }) {
     </div>
   );
 }
-
-export default PaginationDetails;
