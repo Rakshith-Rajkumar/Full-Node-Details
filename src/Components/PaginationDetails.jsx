@@ -2,19 +2,19 @@ import React, { useEffect, useState } from "react";
 
 function PaginationDetails({ currentPage, totalPages, nextPage, prevPage }) {
   return (
-    <div className="border border-black p-1 flex flex-row justify-center gap-2">
+    <div className="p-1 flex flex-row justify-center gap-2">
       <button
-        className="border border-black px-1"
+        className="font-bold border border-red-500 px-1 text-red-500 rounded hover:bg-red-500 hover:text-black"
         onClick={prevPage}
         disabled={currentPage === 1}
       >
         Previous
       </button>
-      <p className="cursor-default">
+      <p className="cursor-default text-red-500">
         Page {currentPage} of {totalPages}
       </p>
       <button
-        className="border border-black px-1"
+        className="font-bold border border-red-500 px-1 text-red-500 rounded hover:bg-red-500 hover:text-black"
         onClick={nextPage}
         disabled={currentPage === totalPages}
       >

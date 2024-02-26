@@ -9,7 +9,7 @@ function CountryList({ countryData }) {
 
   return (
     <div
-      className="border border-black m-2 p-1"
+      className="border border-red-500 m-2 p-1"
       style={{
         display: "grid",
         gridTemplateColumns: "1fr 1fr 1fr",

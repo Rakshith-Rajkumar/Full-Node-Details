@@ -4,8 +4,8 @@ import CountryList from "./CountryList";
 
 function CountriesModal({ activeNodes, formattedTimeStamp, countryData }) {
   return (
-    <div className="container">
-      <div className="border border-black m-2 flex flex-col">
+    <div className="container bg-black">
+      <div className="border border-red-500 m-2 flex flex-col">
         <NodesSummary
           activeNodes={activeNodes}
           formattedTimeStamp={formattedTimeStamp}

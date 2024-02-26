@@ -19,19 +19,21 @@ function NodeListModal({ nodes, activeNodes }) {
 
   return (
     // h-[100vh]
-    <div className="border border-black m-1 p-1 flex flex-col gap-1">
-      <CountrySummary
-        countryCode={countryCode}
-        nodes={nodes}
-        activeNodes={activeNodes}
-      />
-      {/* <SearchBar /> */}
-      <NodeList
-        countryCode={countryCode}
-        // nodes={nodes}
-        countryNodes={countryNodes}
-      />
-      {/* {console.log(countryNodes)} */}
+    <div className="bg-black">
+      <div className="border border-red-500 m-1 p-1 flex flex-col gap-1">
+        <CountrySummary
+          countryCode={countryCode}
+          nodes={nodes}
+          activeNodes={activeNodes}
+        />
+        {/* <SearchBar /> */}
+        <NodeList
+          countryCode={countryCode}
+          // nodes={nodes}
+          countryNodes={countryNodes}
+        />
+        {/* {console.log(countryNodes)} */}
+      </div>
     </div>
   );
 }

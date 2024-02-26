@@ -5,13 +5,15 @@ import displayCountryName from "../Utils/displayCountryName";
 
 function CountrySummary({ countryCode, nodes, activeNodes }) {
   return (
-    <div className="border border-black p-1">
-      <p>Country Name : {displayCountryName(countryCode)}</p>
+    <div className="border border-red-500 p-1">
+      <p className="text-red-500">
+        Country Name : {displayCountryName(countryCode)}
+      </p>
       {/* <ReactCountryFlag countryCode="FR" /> */}
-      <p>
+      <p className="text-red-500">
         Number of Active nodes : {calculateNoOfActiveNodes(countryCode, nodes)}
       </p>
-      <p>
+      <p className="text-red-500">
         Percentage of Active nodes :{" "}
         {percentageOfActiveNodes(countryCode, nodes, activeNodes)} %
       </p>

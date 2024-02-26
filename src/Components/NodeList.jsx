@@ -43,8 +43,7 @@ function NodeList({ countryCode, countryNodes }) {
         nextPage={nextPage}
         prevPage={prevPage}
       />
-
-      <div className="border border-black p-1">
+      <div className="border border-red-500 p-1">
         <NodeListColumnHeader />
         <div className="flex flex-col gap-1">
           {countryNodes.slice(startIndex, endIndex).map((node, i) => (
@@ -52,6 +51,12 @@ function NodeList({ countryCode, countryNodes }) {
           ))}
         </div>
       </div>
+      <PaginationDetails
+        currentPage={currentPage}
+        totalPages={totalPages}
+        nextPage={nextPage}
+        prevPage={prevPage}
+      />
     </>
   );
 }
